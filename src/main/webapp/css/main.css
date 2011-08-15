@@ -1,0 +1,43 @@
+@import url(./reset.css);
+
+@import url(./displaytag.css);
+
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    color: #15428b;
+}
+
+div#container {
+    margin: 0 auto;
+    width: 670px;
+}
+
+div#body {
+    margin-top: 5px;
+    background-color: #F2FAFF;
+    border: 1px solid #AECFFC;
+    height: 500px;
+    -moz-border-radius: 3px 3px 3px 3px;
+}
+
+div#footer {
+    margin-top: 5px;
+    background: url("../images/menuBg.gif") repeat-x scroll 0 0 transparent;
+    border: 1px solid #5087A6;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: Arial,Helvetica,sans-serif;
+    height: 35px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.warning {
+    font-size: 13px;
+    font-family: Arial,Helvetica,sans-serif;
+    color: white;
+    padding: 5px 5px;

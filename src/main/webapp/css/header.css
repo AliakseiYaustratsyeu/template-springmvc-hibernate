@@ -1,0 +1,33 @@
+div#header {
+    margin-top: 5px;
+    background-color: #F2FAFF;
+    border: 1px solid #AECFFC;
+    height: 85px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    background: url("../images/header_bg.jpg") no-repeat scroll 0 0 transparent;
+}
+
+div#header .loginRegistration {
+    padding: 5px 5px;
+    font-family: Verdana; 
+    float: right;   
+}
+
+div#header .loginRegistration li {
+    float: left;
+}
+
+div#header li a, div#header li a:link, div#header li a:visited, div#header li a:active {
+    font-size: 11px;
+    text-decoration: none;
+    display: block;
+}
+
+div#header .loginRegistration .login {
+    border-right: 1px solid #15428b;
+    padding-right: 5px;
+}
+
+div#header .loginRegistration .registration {
+    padding-left: 5px;    
+}

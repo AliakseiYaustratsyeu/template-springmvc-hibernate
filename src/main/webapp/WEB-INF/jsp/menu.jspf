@@ -1,0 +1,27 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
+<tiles:importAttribute name="menuList" />
+
+<security:authorize  access="isAuthenticated()" >
+<ul class="links">
+  
+    <c:forEach var="item" items="${menuList}">
+        <security:authorize url="${item.link}">
+            <li>
+                <c:url var="link" value="${item.link}"/>
+                <a href="${link}"><span><fmt:message key="${item.value}" /></span></a>
+            </li>
+        </security:authorize>
+    </c:forEach>
+</ul>
+</security:authorize>
+<security:authorize  access="!isAuthenticated()">
+<div class="warning">
+    *You should be registered for using this web site!
+</div>
+</security:authorize>
+
+

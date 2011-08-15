@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+    <definition name=".main.layout" template="/WEB-INF/jsp/layout.jsp">
+        <put-attribute name="title" value="Template" />
+        <put-attribute name="header" value="/WEB-INF/jsp/header.jspf" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/empty.jspf" />
+        <put-attribute name="body" value="/WEB-INF/jsp/empty.jspf" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jspf" />
+    </definition>
+
+    <definition name=".user.menu" template="/WEB-INF/jsp/menu.jspf">
+        <put-list-attribute name="menuList">
+            <item value="menu.home" link="/home.do" />
+            <item value="menu.profile" link="/profile.do" />
+            <item value="menu.administration" link="/administration/listActiveUsers.do" />
+            <item value="menu.about" link="/about.do" />
+            <item value="menu.feedback" link="/feedback.do" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name=".login" extends=".main.layout">
+        <put-attribute name="title" value="title.home" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+
+    <definition name=".welcome" extends=".main.layout">
+        <put-attribute name="title" value="title.welcome" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/welcome.jsp" />
+    </definition>
+
+    <definition name=".listActiveUsers" extends=".main.layout">
+        <put-attribute name="title" value="title.listActiveUsers" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/listActiveUsers.jsp" />
+    </definition>
+
+    <definition name=".home" extends=".main.layout">
+        <put-attribute name="title" value="title.home" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/home.jsp" />
+    </definition>
+
+    <definition name=".about" extends=".main.layout">
+        <put-attribute name="title" value="title.about" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/about.jsp" />
+    </definition>
+
+    <definition name=".feedback" extends=".main.layout">
+        <put-attribute name="title" value="title.feedback" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/feedback.jsp" />
+    </definition>
+
+    <definition name=".profile" extends=".main.layout">
+        <put-attribute name="title" value="title.profile" />
+        <put-attribute name="menu" value=".user.menu" />
+        <put-attribute name="body" value="/WEB-INF/jsp/profile/viewProfile.jsp" />
+    </definition>
+</tiles-definitions>
