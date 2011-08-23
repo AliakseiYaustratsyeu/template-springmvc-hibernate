@@ -3,17 +3,15 @@
     xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+>
 
-	<!-- bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="cacheSeconds" value="0" />
-		<property name="webBindingInitializer">
-			<bean class="com.apress.springrecipes.court.web.ReservationBindingInitializer"/>
-		</property>
-	</bean-->
-	
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>	   
-	   
+    <!-- bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> <property name="cacheSeconds" 
+        value="0" /> <property name="webBindingInitializer"> <bean class="com.apress.springrecipes.court.web.ReservationBindingInitializer"/> 
+        </property> </bean -->
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
@@ -22,7 +20,7 @@
                 </prop>
             </props>
         </property>
-		<property name="defaultErrorView" value="error"/>
+        <property name="defaultErrorView" value="error" />
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -44,12 +42,8 @@
         <property name="defaultLocale" value="en" />
     </bean>
 
-    <!-- View Resolver for JSPs -->
-    <!-- bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <property name="requestContextAttribute" 
-        value="rc" /> <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> <property name="prefix" 
-        value="/WEB-INF/jsp/" /> <property name="suffix" value=".jsp" /> </bean -->
-
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="order" value="1"/>
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
     </bean>
 
@@ -61,6 +55,16 @@
         </property>
     </bean>
     
+    <!-- View Resolver for JSPs 
+         InternalResourceViewResolver is always automatically 
+         positioned as the last resolver in the chain   -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="2"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
     <!-- Convenient way to map URLs to JSPs w/o having a Controller -->
     <mvc:view-controller path="/login.do" view-name=".login" />
     <mvc:view-controller path="/welcome.do" view-name=".welcome" />

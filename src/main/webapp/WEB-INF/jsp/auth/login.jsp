@@ -4,8 +4,12 @@
     <font color="red"> Login error. <br />
     Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
 </c:if>
-<c:if test="${not empty param.sessionexpired}">
-    <font color="red"> Your session has been expired. Login again, please!</font>    
+<c:if test="${not empty param.sessioninvalidated}">
+    <font color="red"> Your session has been invalidated. So that you had another session. Login again, please!</font>    
+</c:if>
+
+<c:if test="${not empty param.sessiontimeout}">
+    <font color="red"> Your session has timed out. Login again, please!</font>    
 </c:if>
 
 <c:url var="loginUrl" value="/j_spring_security_check" />

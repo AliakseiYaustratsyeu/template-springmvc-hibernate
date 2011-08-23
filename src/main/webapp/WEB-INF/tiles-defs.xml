@@ -27,9 +27,9 @@
     <definition name=".login" extends=".main.layout">
         <put-attribute name="title" value="title.home" />
         <put-attribute name="menu" value=".user.menu" />
-        <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/auth/login.jsp" />
     </definition>
-
+    
     <definition name=".welcome" extends=".main.layout">
         <put-attribute name="title" value="title.welcome" />
         <put-attribute name="menu" value=".user.menu" />
