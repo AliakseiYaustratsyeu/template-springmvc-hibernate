@@ -22,6 +22,11 @@
             <item value="menu.about" link="/about.do" />
             <item value="menu.feedback" link="/feedback.do" />
         </put-list-attribute>
+        <put-list-attribute name="menu.administration">
+            <item value="menu.list.active.users" link="/administration/listActiveUsers.do" />
+            <item value="menu.list.active.users" link="/administration/listActiveUsers.do" />
+            <item value="menu.list.active.users" link="/administration/listActiveUsers.do" />
+        </put-list-attribute>
     </definition>
 
     <definition name=".login" extends=".main.layout">

@@ -1,22 +1,65 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ include file="/common/taglibs.jsp"%>
 
-<tiles:importAttribute name="menuList" />
+<tiles:useAttribute id="menuList" name="menuList" />
 
 <security:authorize  access="isAuthenticated()" >
-<ul class="links">
-  
-    <c:forEach var="item" items="${menuList}">
-        <security:authorize url="${item.link}">
-            <li>
-                <c:url var="link" value="${item.link}"/>
-                <a href="${link}"><span><fmt:message key="${item.value}" /></span></a>
-            </li>
-        </security:authorize>
+
+<link rel="stylesheet" type="text/css" href="${resourceUrl}/css/superfish.css" media="screen">
+<script type="text/javascript" src="${resourceUrl}/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="${resourceUrl}/js/hoverIntent.js"></script>
+<script type="text/javascript" src="${resourceUrl}/js/superfish.js"></script>
+<script type="text/javascript">
+
+// initialise plugins
+jQuery(function(){
+    jQuery('ul.sf-menu').superfish();
+});
+
+</script>
+
+<div id="mainMenu" class="mainMenu">
+<ul class="sf-menu">
+      
+    <c:forEach var="item" items="${menuList}" varStatus="itemStatus">
+    <security:authorize url="${item.link}">
+    
+        <li>
+            <c:url var="link" value="${item.link}"/>
+            <a href="${link}"><span><fmt:message key="${item.value}" /></span></a>
+            
+            <tiles:useAttribute id="subMenu" name="${item.value}" classname="java.util.List" ignore="true" />
+            <c:if test="${subMenu != null}">
+                <div class="subMenu">
+                <ul class="links">
+                
+                    <c:forEach var="item1" items="${subMenu}">
+                    <security:authorize url="${item1.link}">
+                    
+                        <li>
+                            <c:url var="link1" value="${item1.link}"/>
+                            <a href="${link1}"><span><fmt:message key="${item1.value}" /></span></a>
+                        </li>
+                        <c:if test="${not itemStatus.last}">
+                            <li>
+                                <span class="v-separator"></span>
+                            </li> 
+                        </c:if>
+                
+                    </security:authorize>
+                    </c:forEach>
+                    
+                </ul>
+                </div>
+            </c:if>
+            <c:set var="subMenu" value="${null}" />
+        </li>
+        
+    </security:authorize>
     </c:forEach>
+        
 </ul>
+</div>
+
 </security:authorize>
 <security:authorize  access="!isAuthenticated()">
 <div class="warning">

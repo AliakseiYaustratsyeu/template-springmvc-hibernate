@@ -6,14 +6,9 @@
     <tiles:useAttribute id="title" name="title" classname="java.lang.String"/>
     <title><fmt:message key="${title}" /></title>
     
-    <c:url var="mainCssUrl" value='${resourceUrl}/css/main.css'/>
-    <link rel="stylesheet" type="text/css" media="all" href="${mainCssUrl}" />
-    
-    <c:url var="menuCssUrl" value='${resourceUrl}/css/menu.css'/>
-    <link rel="stylesheet" type="text/css" media="all" href="${menuCssUrl}" />
-    
-    <c:url var="headerCssUrl" value='${resourceUrl}/css/header.css'/>
-    <link rel="stylesheet" type="text/css" media="all" href="${headerCssUrl}" />
+    <link rel="stylesheet" type="text/css" media="all" href="${resourceUrl}/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="${resourceUrl}/css/menu.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="${resourceUrl}/css/header.css" />
 </head>
 <body>
     <div id="container">

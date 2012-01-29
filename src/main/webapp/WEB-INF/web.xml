@@ -15,7 +15,10 @@
         <param-value>en</param-value>
     </context-param>
 
-    <!-- Context Configuration locations for Spring XML files -->
+    <!--
+      - Location of the XML file that defines the root application context
+      - Applied by ContextLoaderListener.
+      -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -57,9 +60,19 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--
+      - Loads the root application context of this web app at startup.
+      - The application context is then available via
+      - WebApplicationContextUtils.getWebApplicationContext(servletContext).
+    -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
+    <!-- The servlet container will notify Spring
+       - Security (through the HttpSessionEventPublisher) 
+       - of session lifecycle events 
+    -->
     <listener>
         <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
     </listener>
@@ -72,7 +85,8 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <!-- Pay attention on "/" url pattern!!!    -->
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <session-config>

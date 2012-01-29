@@ -54,6 +54,7 @@
         <jdbc.url>jdbc:oracle:thin:@localhost:1521:XE</jdbc.url>
         <jdbc.username>stepbystep</jdbc.username>
         <jdbc.password>oracle</jdbc.password>
+        <jdbc.validationQuery>select * from dual</jdbc.validationQuery>
     </properties>
 
     <repositories>

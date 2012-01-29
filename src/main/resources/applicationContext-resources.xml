@@ -26,7 +26,7 @@
 		<property name="defaultAutoCommit" value="true" />
 
 		<property name="initialSize" value="10" />
-		<property name="validationQuery" value="select * from dual" />
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
 		<property name="testOnBorrow" value="true" />
 		<property name="testOnReturn" value="true" />
 		<property name="testWhileIdle" value="true" />
